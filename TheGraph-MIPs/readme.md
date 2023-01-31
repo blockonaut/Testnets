@@ -15,7 +15,7 @@ GRT Token Address: 0xc944e90c64b2c07662a292be6244bdf05cda44a7
 [Official Explorer](https://thegraph.com/explorer?chain=mainnet)  
 [Graphscan Explorer](https://graphscan.io)  
 [StakeSquid's Docker one-stop solution](https://github.com/StakeSquid/graphprotocol-mainnet-docker)     
-[Mainnet Configuration - Latest Releases & Environment Variables](https://docs.thegraph.academy/the-graph-ecosystem/infrastructure/mainnet)
+[Mainnet Configuration - Latest Releases & Environment Variables](https://docs.thegraph.academy/the-graph-ecosystem/infrastructure/testnet)
 
 ### Testnet:
 
