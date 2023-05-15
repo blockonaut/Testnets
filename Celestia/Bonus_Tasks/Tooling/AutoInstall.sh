@@ -17,7 +17,7 @@ node_name=blockonaut_guided
 chain_id=blockspacerace-0
 # set pruning (y/n)
 pruning=y
-# Reset network: THIS WILL DELETE ALL DATA FOLDER! (y/n)"  
+# Reset network: THIS WILL DELETE ALL DATA FOLDER! (y/n)"
 reset=n
 # This option will install celestia-node binary, which is (for blockspacerace) necessary to run the bridge node"
 # Do you want to install Celestia bridge node? (y/n)"
@@ -208,11 +208,9 @@ fi
 
 sudo systemctl enable celestia-bridge
 
-
 else
 echo -e "\033[0;32mgo on without background process...\033[0m"
 fi
-
 
 echo -e "\033[0;32mInstallation completed\033[0m"
 echo " "
