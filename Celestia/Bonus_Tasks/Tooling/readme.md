@@ -9,6 +9,7 @@ In any case at least "node_name=" should be adjusted.
 The only interaction necessary is pressing Enter after saving the mnemonic phrase.
 
 Quick howto:
+
 ```chmod +x AutoInstall.sh``` 
 for making it executable and then
 
