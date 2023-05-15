@@ -28,6 +28,9 @@ for making it executable and then
 
 for starting the automated Installer
 
+Video:
+[![asciicast](https://asciinema.org/a/29BDIVfkc3qiQx31ta0vKHvAm.svg)](https://asciinema.org/a/29BDIVfkc3qiQx31ta0vKHvAm)
+
 # Bashscript for guided installation of celestia-appd (fullnode), celestia bridge node and dependecies
 
 Guided installation with all necessary dependencies.
