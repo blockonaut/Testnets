@@ -10,7 +10,7 @@ In any case at least "node_name=" should be adjusted.
 
 The only interaction necessary is pressing Enter after saving the mnemonic phrase.
 
-## Quick Start Guide AutoInstall:
+## Quick Start AutoInstall:
 
 ```wget https://raw.githubusercontent.com/blockonaut/Testnets/main/Celestia/Bonus_Tasks/Tooling/AutoInstall.sh```
 
@@ -33,7 +33,7 @@ for starting the automated Installer
 Guided installation with all necessary dependencies.
 The script is intentionally simple and does not need any other packages itself.
 
-## Quick Start Guide InstallScript:
+## Quick Start guided InstallScript:
 
 ```wget https://raw.githubusercontent.com/blockonaut/Testnets/main/Celestia/Bonus_Tasks/Tooling/InstallScript.sh```
 
