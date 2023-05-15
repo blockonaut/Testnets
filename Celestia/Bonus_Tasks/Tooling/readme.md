@@ -10,6 +10,9 @@ The only interaction necessary is pressing Enter after saving the mnemonic phras
 
 Quick howto:
 
+```wget https://raw.githubusercontent.com/blockonaut/Testnets/main/Celestia/Bonus_Tasks/Tooling/AutoInstall.sh```
+for downloading the AutoInstall.sh Bashscript
+
 ```chmod +x AutoInstall.sh``` 
 for making it executable and then
 
@@ -20,6 +23,9 @@ for starting the automated Installer
 
 Guided installation with all necessary dependencies.
 The script is intentionally simple and does not need any other packages itself.
+
+```wget https://raw.githubusercontent.com/blockonaut/Testnets/main/Celestia/Bonus_Tasks/Tooling/InstallScript.sh```
+for downloading the InstallScript.sh Bashscript
 
 ```chmod +x InstallScript.sh``` 
 for making it executable and then
