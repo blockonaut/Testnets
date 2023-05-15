@@ -125,7 +125,7 @@ if [ "$install_fullnode" = "y" ]; then
     echo -e "\033[0;32mConensus full node installed.\033[0m"
 fi
 
-# Install bride node
+
 if [ "$install_bridgenode" = "y" ]; then
     cd $HOME 
     rm -rf celestia-node 
@@ -153,7 +153,6 @@ fi
 echo -e "\033[0;32mcelestia-node binary installed and initilized.\033[0m"
     fi
 
-# config systemd services for celestia appd and celestia bridge
 if [ "$sysprocess" = "y" ]; then
 sudo tee <<EOF >/dev/null /etc/systemd/system/celestia-appd.service
 [Unit]
@@ -171,15 +170,15 @@ EOF
 
 sudo systemctl enable celestia-appd
 
-
-sudo tee <<EOF >/dev/null /etc/systemd/system/celestia-bridge.service
+if [ "$chain_id" = "blockspacerace-0" ]; then
+sudo tee <<EOF >/dev/null /etc/systemd/system/celestia-bridge.service 
 [Unit]
 Description=celestia-bridge Cosmos daemon
 After=network-online.target
 
 [Service]
 User=$USER
-ExecStart=$(which celestia) bridge start
+ExecStart=$(which celestia) bridge start --core.ip https://127.0.0.1 --core.rpc.port 26657 --core.grpc.port 9090 --keyring.accname my_celes_key --metrics.tls=false --metrics --metrics.endpoint otel.celestia.tools:4318 --p2p.network blockspacerace
 Restart=on-failure
 RestartSec=3
 LimitNOFILE=4096
@@ -187,6 +186,25 @@ LimitNOFILE=4096
 [Install]
 WantedBy=multi-user.target
 EOF
+
+else
+sudo tee <<EOF >/dev/null /etc/systemd/system/celestia-bridge.service 
+[Unit]
+Description=celestia-bridge Cosmos daemon
+After=network-online.target
+
+[Service]
+User=$USER
+ExecStart=$(which celestia) bridge start --core.ip -core.ip https://127.0.0.1 --core.rpc.port 26657 --core.grpc.port 9090 --keyring.accname my_celes_key --metrics.tls=false --metrics --metrics.endpoint otel.celestia.tools:4318 --p2p.network mocha
+Restart=on-failure
+RestartSec=3
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+fi
 
 sudo systemctl enable celestia-bridge
 
@@ -199,14 +217,12 @@ fi
 echo -e "\033[0;32mInstallation completed\033[0m"
 echo " "
 echo -e "\033[0;32mYou can start your consensus full node with: celestia-appd start\033[0m"
+echo -e "\033[0;32msudo systemctl start celestia-appd start\033[0m"
 echo " "
-echo -e "\033[0;32mWhen it is synced you can start your blockspacerace bridge node with:\033[0m"
-echo -e "\033[0;32mcelestia bridge start --core.ip <ip-address> --p2p.network blockspacerace\033[0m"
+echo -e "\033[0;32mWait until the node is fully synced - you can check this with:\033[0m"
+echo -e "\033[0;32mcelestia-appd status 2>&1 | jq .SyncInfo\033[0m"
 echo " "
-echo -e "\033[0;32mWhen you are on the Mocha you can start your bridge node with:\033[0m"
-echo -e "\033[0;32mcelestia bridge start --core.ip <ip-address>\033[0m"
-echo -e "\033[0;32mIf you installed your consensus full node on the same server the core.ip is localhost\033[0m"
+echo -e "\033[0;32mAfter you get catching_up=false you can start the bridge with:\033[0m"
+echo -e "\033[0;32msudo systemctl start celestia-bridge \033[0m"
 echo " "
-echo -e "\033[0;32mChecking node status: curl <IP>:26657/status\033[0m"
-echo " "
-echo -e "\033[0;32mChecking bridge: journalctl -u celestia-bridge.service -f\033[0m"
+echo -e "\033[0;32mChecking bridge node live logs: journalctl -u celestia-bridge.service -f\033[0m"
