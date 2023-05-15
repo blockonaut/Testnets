@@ -1,4 +1,3 @@
-There are two variants availeable. 
 There are two bashscript variants available. The first one (AutoInstall.sh) is a oneclick solution. 
 
 ## One-click automated installation of celestia-appd (fullnode), bridge and dependencies:
